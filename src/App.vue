@@ -1,10 +1,18 @@
 <template>
-  <div id="nav">
-  
+  <div class="header">
+    <p class="title">Blog</p>
   </div>
-  <router-view/>
+  <router-view />
 </template>
 
-<style>
-
+<style lang="less">
+.header {
+  display: flex;
+  justify-content: flex-end;
+  .title {
+    font-size: 2rem;
+    font-weight: 800;
+    width: 10rem;
+  }
+}
 </style>
