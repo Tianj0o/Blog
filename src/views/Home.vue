@@ -1,8 +1,7 @@
 <template>
   <div class="home">
     <div class="container">
-      <div style="border: black 1px solid;" @click="handleSentClick">{{ article.title }}</div>
-      <t-article :article="article.body"></t-article>
+      <article-info></article-info>
     </div>
   </div>
 </template>
@@ -10,11 +9,11 @@
 <script lang="ts">
 import router from "@/router";
 import { defineComponent, reactive } from "@vue/runtime-core";
-import axios from 'axios'
-import TArticle from '../components/article.vue'
+import { useStore } from "vuex";
+import articleInfo from '@/views/ArticleInfo.vue'
 export default defineComponent({
   components: {
-    TArticle
+    articleInfo
   },
   setup() {
     const article = reactive({
@@ -22,20 +21,13 @@ export default defineComponent({
       createAt: '',
       body: ''
     })
-    axios.get('/api').then((res) => {
-      // console.log(res.data)
-      article.title = res.data.title
-      article.createAt = res.data.createTime,
-        article.body = res.data.articleBody
-    })
 
-    const handleSentClick = () => {
-      router.push(`/post/${article.title}`)
-    }
+    const store = useStore()
+    store.dispatch('getAllTitles')
 
     return {
       article,
-      handleSentClick
+
     }
   }
 })

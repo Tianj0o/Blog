@@ -2,7 +2,9 @@
   <div class="header">
     <p class="title">Blog</p>
   </div>
-  <router-view />
+  <div class="container">
+    <router-view />
+  </div>
 </template>
 
 <style lang="less">
@@ -14,5 +16,8 @@
     font-weight: 800;
     width: 10rem;
   }
+}
+.container {
+  font-family: Caskaydia;
 }
 </style>

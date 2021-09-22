@@ -1,10 +1,26 @@
 const Koa = require('koa');
 const app = new Koa()
 
-const useData = require('./src/readacticles')
-app.use((ctx, next) => {
-  ctx.body = useData.htmlData
+const Router = require('koa-router')
+const router = new Router()
+const bodyParser = require('koa-bodyparser');
+const { getArticle } = require('./src/readacticles')
+const { articleLists } = require('./src/articles/index')
+app.use(bodyParser())
+
+router.get('/posts', (ctx) => {
+  ctx.body = {
+    articleLists
+  }
 })
+router.post('/posts/1', (ctx) => {
+  console.log(ctx.request.body)
+  const { title } = ctx.request.body
+  const data = getArticle(title)
+  // console.log(data)
+  ctx.body = data
+})
+app.use(router.routes()).use(router.allowedMethods())
 app.listen(8888, () => {
   console.log('监听8888')
 })
