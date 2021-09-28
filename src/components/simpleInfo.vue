@@ -28,7 +28,9 @@ export default defineComponent({
 <style lang="less" scoped>
 .simpleInfo {
   width: 70%;
-  background-color: pink;
+  background: cornflowerblue;
+  opacity: 0.6;
+  border-radius: 20px;
   height: 200px;
   display: flex;
   flex-direction: column;

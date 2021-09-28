@@ -25,13 +25,14 @@ export default defineComponent({
     })
     const route = useRoute()
     console.log(route.params.title)
-
-    getArticle(route.params.title as string).then((res: any) => {
-      console.log(res.data)
+    //请求文章数据 之后用vuex 存取 currentPage
+    async function getArticleStart() {
+      const res: any = await getArticle(route.params.title as string)
       article.body = res.data.articleBody
       article.createAt = res.data.createTime
       article.title = res.data.title
-    })
+    }
+    getArticleStart()
     return {
       article
     }
