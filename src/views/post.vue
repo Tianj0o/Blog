@@ -1,10 +1,12 @@
 <template>
   <div class="posts">
-    <div class="header">
+    <div class="header adapwidth">
       <h1>{{ article.title }}</h1>
       <span class="time">{{ article.createAt }}</span>
     </div>
-    <t-article :article="article.body"></t-article>
+    <div class="adapwidth">
+      <t-article :article="article.body"></t-article>
+    </div>
   </div>
 </template>
 
@@ -48,7 +50,7 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   .header {
-    width: 55%;
+    // width: 55%;
     display: flex;
     justify-content: space-between;
     .time {
@@ -66,5 +68,15 @@ pre {
   padding: 10px;
   color: whitesmoke;
   background-color: darkslategray;
+}
+@media screen and (max-width: 750px) {
+  .adapwidth {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 750px) {
+  .adapwidth {
+    width: 55%;
+  }
 }
 </style>

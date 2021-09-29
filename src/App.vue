@@ -23,6 +23,16 @@
     color: cornsilk;
   }
 }
+@media screen and (max-width: 750px) {
+  .root {
+    background: url("./assets/bg/bg2.jpg") no-repeat fixed;
+  }
+}
+@media screen and (min-width: 750px) {
+  .root {
+    background: url("./assets/bg/bg1.png") no-repeat fixed;
+  }
+}
 .container {
   font-family: Caskaydia;
   flex: 1;
@@ -32,10 +42,11 @@
   text-align: center;
 }
 .root {
-  background: url("./assets/bg/bg1.png") no-repeat fixed;
+  // background: url("./assets/bg/bg1.png") no-repeat fixed;
   opacity: 1;
   min-height: 100vh;
-  background-size: 100%;
+  background-size: cover;
+  max-width: 100vw;
 }
 ::-webkit-scrollbar {
   width: 4px;
