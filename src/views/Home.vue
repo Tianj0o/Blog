@@ -7,7 +7,6 @@
 </template>
 
 <script lang="ts">
-import router from "@/router";
 import { defineComponent, reactive } from "@vue/runtime-core";
 import { useStore } from "vuex";
 import articleInfo from '@/views/ArticleInfo.vue'

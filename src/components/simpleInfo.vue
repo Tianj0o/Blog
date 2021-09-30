@@ -11,7 +11,8 @@ export default defineComponent({
       type: String,
       default: '2021/9/22'
     }
-  }
+  },
+
 })
 
 </script>

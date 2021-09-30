@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, ref } from 'vue'
 import simpleInfo from '@/components/simpleInfo.vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
@@ -12,14 +12,14 @@ export default defineComponent({
     const titles = computed(() => store.state.allArticlesTitle)
 
     const router = useRouter()
+
     const handleDetailsClick = (title: string) => {
       const path = `/posts/${title.replace('.md', '')}`
-      // console.log(path)
       router.push(path)
     }
     return {
       titles,
-      handleDetailsClick
+      handleDetailsClick,
     }
   }
 })
@@ -27,7 +27,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="articleInfo">
+  <div class="articleInfo" ref="articleInfoRef">
     <template v-for="item in titles" :key="item">
       <simple-info @click="handleDetailsClick(item)" :title="item"></simple-info>
     </template>

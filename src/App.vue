@@ -1,17 +1,40 @@
 <template>
   <div class="root">
     <div class="header">
-      <p class="title">Blog</p>
+      <p @click="handleTitleClick" class="title">Blog</p>
     </div>
     <div class="container">
-      <router-view />
+      <router-view v-slot="{ Component, route }">
+        <transition :name="route.meta.transition">
+          <component :is="Component"></component>
+        </transition>
+      </router-view>
     </div>
     <div class="footer">
       <div>i am footer</div>
     </div>
   </div>
 </template>
+<script lang="ts">
+import { defineComponent } from "@vue/runtime-core";
+import { useRoute, useRouter } from "vue-router";
+export default defineComponent({
+  setup() {
+    const router = useRouter()
+    const route = useRoute()
+    const handleTitleClick = () => {
 
+      if (route.path !== '/') {
+        router.push('/')
+      }
+    }
+
+    return {
+      handleTitleClick
+    }
+  }
+})
+</script>
 <style lang="less">
 .header {
   display: flex;
@@ -37,7 +60,18 @@
   font-family: Caskaydia;
   flex: 1;
 }
-
+.to-post-leave-to {
+  transform: translateX(-100%);
+}
+.to-post-leave-active {
+  transition: all 0.5s;
+}
+.to-home-leave-to {
+  transform: translateY(100%);
+}
+.to-home-leave-active {
+  transition: all 0.5s;
+}
 .footer {
   text-align: center;
 }
