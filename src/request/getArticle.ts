@@ -8,6 +8,9 @@ export default function(title: string) {
       })
       .then((res: any) => {
         resolve(res);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   });
 }

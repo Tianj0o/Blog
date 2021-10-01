@@ -16,7 +16,6 @@ export default createStore<RootState>({
   },
   actions: {
     async getAllTitles({ commit }) {
-      // const data = await axios.get("/api/posts");
       const data = await axios.get(`${BASE_URL}/posts`);
       commit("setAllArticlesTitle", data.data.articleLists);
     },
