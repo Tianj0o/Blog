@@ -19,12 +19,10 @@ export default defineComponent({
 
 
 </script>
-<style lang="less">
+<style>
 .article {
-  color: rgb(163, 231, 231);
-  // max-width: 55%;
-  background-color: darkslategray;
-  padding: 3%;
+  color: black;
+  opacity: 0.7;
 }
 code {
   padding: 20px;
@@ -32,5 +30,8 @@ code {
   background-color: rgb(216, 160, 156);
   color: darkslategray;
   font-size: 1.2rem !important;
+}
+li {
+  list-style: none;
 }
 </style>

@@ -1,7 +1,11 @@
 <template>
   <div class="root">
     <div class="header">
+      <p class="motto">Just Do It</p>
       <p @click="handleTitleClick" class="title">Blog</p>
+      <router-link custom v-slot="{ navigate }" to="/about">
+        <p @click="navigate">About</p>
+      </router-link>
     </div>
     <div class="container">
       <router-view v-slot="{ Component, route }">
@@ -11,7 +15,12 @@
       </router-view>
     </div>
     <div class="footer">
-      <div>i am footer</div>
+      <div>
+        <a
+          style="text-decoration: none;"
+          href="https://beian.miit.gov.cn/#/Integrated/index"
+        >皖ICP备2021005516号-1</a>
+      </div>
     </div>
   </div>
 </template>
@@ -36,52 +45,51 @@ export default defineComponent({
 })
 </script>
 <style lang="less">
-.header {
-  display: flex;
-  justify-content: flex-end;
-  .title {
-    font-size: 2rem;
-    font-weight: 800;
-    width: 10rem;
-    color: cornsilk;
-  }
-}
-@media screen and (max-width: 750px) {
-  .root {
-    background: url("./assets/bg/bg2.jpg") no-repeat fixed;
-  }
-}
-@media screen and (min-width: 750px) {
-  .root {
-    background: url("./assets/bg/bg1.png") no-repeat fixed;
-  }
-}
-.container {
+.root {
+  opacity: 1;
+  min-height: 100vh;
+  max-width: 100vw;
+  padding: 0 0 20px 0;
   font-family: Caskaydia;
-  flex: 1;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: black;
+    padding: 0 20px;
+    .title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: black;
+    }
+    .motto {
+      min-width: 60%;
+    }
+  }
+  .container {
+    font-family: Caskaydia;
+    flex: 1;
+    min-height: 85vh;
+    padding: 30px 0;
+  }
+  .footer {
+    text-align: center;
+  }
 }
+
 .to-post-leave-to {
   transform: translateX(-100%);
 }
 .to-post-leave-active {
   transition: all 0.5s;
 }
-.to-home-leave-to {
-  transform: translateY(100%);
-}
-.to-home-leave-active {
-  transition: all 0.5s;
-}
-.footer {
-  text-align: center;
-}
-.root {
-  // background: url("./assets/bg/bg1.png") no-repeat fixed;
-  opacity: 1;
-  min-height: 100vh;
-  background-size: cover;
-  max-width: 100vw;
-}
+// .to-home-leave-to {
+//   transform: translateY(100%);
+// }
+// .to-home-leave-active {
+//   transition: all 0.5s;
+// }
+
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;

@@ -44,15 +44,18 @@ export default defineComponent({
 </script>
 
 
-<style lang="less">
+<style lang="less" scoped>
 .posts {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 90%;
+  margin: 0 auto;
   .header {
     // width: 55%;
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
     .time {
       display: flex;
       text-align: end;
@@ -67,7 +70,6 @@ li {
 pre {
   padding: 10px;
   color: whitesmoke;
-  background-color: darkslategray;
 }
 @media screen and (max-width: 750px) {
   .adapwidth {
