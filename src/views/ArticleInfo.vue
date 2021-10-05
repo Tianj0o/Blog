@@ -3,13 +3,14 @@ import { defineComponent, computed } from 'vue'
 import simpleInfo from '@/components/simpleInfo.vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import type { articleInfo } from '@/store/type'
 export default defineComponent({
   components: {
     simpleInfo
   },
   setup() {
     const store = useStore()
-    const titles = computed(() => store.state.allArticlesTitle)
+    const articleInfoLists = computed<articleInfo[]>(() => store.state.articleInfoLists)
 
     const router = useRouter()
 
@@ -18,7 +19,7 @@ export default defineComponent({
       router.push(path)
     }
     return {
-      titles,
+      articleInfoLists,
       handleDetailsClick,
     }
   }
@@ -28,8 +29,12 @@ export default defineComponent({
 
 <template>
   <div class="articleInfo" ref="articleInfoRef">
-    <template v-for="item in titles" :key="item">
-      <simple-info @click="handleDetailsClick(item)" :title="item"></simple-info>
+    <template v-for="articleInfo in articleInfoLists" :key="articleInfo.title">
+      <simple-info
+        @click="handleDetailsClick(articleInfo.title)"
+        :title="articleInfo.title"
+        :createAt="articleInfo.createAt"
+      ></simple-info>
     </template>
   </div>
 </template>

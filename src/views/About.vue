@@ -1,11 +1,14 @@
 <template>
   <div class="AboutMe">
-    <p style="font-size: 2rem;">About Me</p>
+    <p style="font-size: 2rem;padding: 20px;">About Me</p>
     <div class="main">
       <div>大三学生</div>
-      <div>热爱前端</div>
+      <div>热爱前端、后端</div>
+      <div>无聊的人</div>
       <div>很菜的吉他指弹爱好者</div>
+      <div>.......</div>
     </div>
+    <p class="motto">总之岁月漫长，然而值得等待</p>
   </div>
 </template>
 
@@ -25,22 +28,22 @@ export default defineComponent({
   // align-items: center;
   flex-direction: column;
   padding: 20px;
+  max-width: 100vw;
   .main {
     font-size: 1.5rem;
-    margin: 0 auto;
+    opacity: 0.7;
+    margin: 30px auto;
+    width: 50%;
+
     div {
       margin: 10px 0;
     }
   }
-}
-@media screen and (max-width: 750px) {
-  .AboutMe {
-    color: rgb(97, 235, 200);
-  }
-}
-@media screen and (min-width: 750px) {
-  .AboutMe {
-    color: black;
+  .motto {
+    opacity: 0.7;
+    font-weight: 800;
+    font-style: italic;
+    padding: 20px;
   }
 }
 </style>

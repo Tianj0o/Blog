@@ -4,7 +4,7 @@ const Router = require('koa-router')
 const router = new Router()
 const bodyParser = require('koa-bodyparser');
 const { getArticle } = require('./src/readacticles')
-const { articleLists } = require('./src/articles/index')
+const { articleInfoLists } = require('./src/articles/index')
 app.use(bodyParser())
 app.use(async (ctx, next) => {
   ctx.set('Access-Control-Allow-Origin', '*');
@@ -16,7 +16,7 @@ app.use(async (ctx, next) => {
 });
 router.get('/posts', (ctx) => {
   ctx.body = {
-    articleLists
+    articleInfoLists
   }
 })
 router.post('/posts/1', (ctx) => {
