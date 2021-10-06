@@ -22,12 +22,20 @@
         >皖ICP备2021005516号-1</a>
       </div>
     </div>
+    <div class="open-animation">
+      <open-animation />
+    </div>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
 import { useRoute, useRouter } from "vue-router";
+import openAnimation from "./components/openAnimation.vue";
+
 export default defineComponent({
+  components: {
+    openAnimation
+  },
   setup() {
     const router = useRouter()
     const route = useRoute()
@@ -49,7 +57,7 @@ export default defineComponent({
   opacity: 1;
   min-height: 100vh;
   max-width: 100vw;
-  padding: 0 0 20px 0;
+
   font-family: Caskaydia;
   .header {
     display: flex;
@@ -69,27 +77,22 @@ export default defineComponent({
   .container {
     font-family: Caskaydia;
     flex: 1;
-    min-height: 85vh;
+    min-height: 80vh;
     padding: 30px 0;
   }
   .footer {
     text-align: center;
+    position: relative;
+    // bottom: 10px;
+    color: whitesmoke;
   }
 }
-
 .to-post-leave-to {
   transform: translateX(-100%);
 }
 .to-post-leave-active {
   transition: all 0.5s;
 }
-// .to-home-leave-to {
-//   transform: translateY(100%);
-// }
-// .to-home-leave-active {
-//   transition: all 0.5s;
-// }
-
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="container">
+    <div class="home-container">
       <article-info></article-info>
     </div>
   </div>
@@ -43,7 +43,7 @@ export default defineComponent({
       width: 10rem;
     }
   }
-  .container {
+  .home-container {
     display: flex;
     flex-direction: column;
     align-items: center;
