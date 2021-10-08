@@ -11,8 +11,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 import TArticle from '../components/article.vue'
 import getArticle from '@/request/getArticle'
 export default defineComponent({
@@ -26,13 +27,15 @@ export default defineComponent({
       body: ''
     })
     const route = useRoute()
-    console.log(route.params.title)
-    //请求文章数据 之后用vuex 存取 currentPage
+
+    const store = useStore()
+    const articleInfoLists = computed(() => store.state.articleInfoLists)
+    const findArticle = articleInfoLists.value.find((item: any) => item.title === route.params.title)
+    article.title = findArticle.title
+    article.createAt = findArticle.createAt
     async function getArticleStart() {
       const res: any = await getArticle(route.params.title as string)
       article.body = res.data.articleBody
-      article.createAt = res.data.createTime
-      article.title = res.data.title
     }
     getArticleStart()
     return {

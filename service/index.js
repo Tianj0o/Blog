@@ -24,7 +24,9 @@ router.post('/posts/1', (ctx) => {
   const { title } = ctx.request.body
   const data = getArticle(title)
   // console.log(data)
-  ctx.body = data
+  ctx.body = {
+    articleBody: data
+  }
 })
 app.use(router.routes()).use(router.allowedMethods())
 app.listen(8888, () => {

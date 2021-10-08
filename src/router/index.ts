@@ -1,22 +1,20 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Home from "@/views/Home.vue";
-import Post from "@/views/Post.vue";
-import About from "@/views/About.vue";
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    component: Home,
+    component: () => import("@/views/Home.vue"),
     meta: {
       transition: "to-home",
     },
   },
   {
     path: "/about",
-    component: About,
+    component: () => import("@/views/About.vue"),
   },
   {
     path: "/posts/:title",
-    component: Post,
+    component: () => import("@/views/Post.vue"),
     meta: {
       transition: "to-post",
     },
