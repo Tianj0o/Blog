@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed, watch } from 'vue'
+import { defineComponent, reactive, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import TArticle from '../components/article.vue'
@@ -47,7 +47,7 @@ export default defineComponent({
 </script>
 
 
-<style lang="less" scoped>
+<style lang="less">
 .posts {
   display: flex;
   flex-direction: column;
@@ -76,12 +76,21 @@ pre {
 }
 @media screen and (max-width: 750px) {
   .adapwidth {
-    width: 90%;
+    width: 100%;
   }
 }
 @media screen and (min-width: 750px) {
   .adapwidth {
     width: 55%;
   }
+}
+img {
+  max-width: 100% !important;
+}
+blockquote {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
 }
 </style>

@@ -9,7 +9,7 @@
     </div>
     <div class="container">
       <router-view v-slot="{ Component, route }">
-        <transition :name="route.meta.transition">
+        <transition mode="out-in" :name="route.meta.transition">
           <component :is="Component"></component>
         </transition>
       </router-view>
@@ -22,20 +22,13 @@
         >皖ICP备2021005516号-1</a>
       </div>
     </div>
-    <div class="open-animation">
-      <open-animation />
-    </div>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
 import { useRoute, useRouter } from "vue-router";
-import openAnimation from "./components/openAnimation.vue";
 
 export default defineComponent({
-  components: {
-    openAnimation
-  },
   setup() {
     const router = useRouter()
     const route = useRoute()
@@ -91,7 +84,7 @@ export default defineComponent({
   transform: translateX(-100%);
 }
 .to-post-leave-active {
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 ::-webkit-scrollbar {
   width: 4px;
