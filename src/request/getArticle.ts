@@ -1,12 +1,12 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 import { BASE_URL } from "./config";
-export default function(title: string) {
-  return new Promise((resolve, rej) => {
+export default function(title: string): Promise<unknown> {
+  return new Promise((resolve) => {
     axios
       .post(`${BASE_URL}/posts/1`, {
         title,
       })
-      .then((res: any) => {
+      .then((res: unknown) => {
         resolve(res);
       })
       .catch((err) => {

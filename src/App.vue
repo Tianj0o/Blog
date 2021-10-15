@@ -27,11 +27,12 @@
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
 import { useRoute, useRouter } from "vue-router";
-
+import init from './hooks/useBgcAnimation'
 export default defineComponent({
   setup() {
     const router = useRouter()
     const route = useRoute()
+    init()
     const handleTitleClick = () => {
 
       if (route.path !== '/') {

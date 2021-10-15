@@ -1,4 +1,4 @@
-import { createStore, Store } from "vuex";
+import { createStore } from "vuex";
 import { BASE_URL } from "@/request/config";
 import { articleInfo } from "./type";
 interface RootState {
@@ -30,7 +30,7 @@ const store = createStore<RootState>({
   },
 });
 
-export function setupStore() {
+export function setupStore(): void {
   store.dispatch("getLocalTitles");
 }
 export default store;
