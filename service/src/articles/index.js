@@ -3,6 +3,10 @@
 
 exports.articleInfoLists = [
   {
+    title: "JS中的prototype&&__proto__",
+    createAt: "2021/10/20"
+  },
+  {
     title: "Canvas学习",
     createAt: "2021/10/8"
   },
