@@ -1,11 +1,10 @@
 import { createStore } from "vuex";
-import { BASE_URL } from "@/request/config";
 import { articleInfo } from "./type";
+import TR from "@/request/index";
+import { getAllPosts } from "@/request/main";
 interface RootState {
   articleInfoLists: articleInfo[];
 }
-// export const key: InjectionKey<Store<RootState>> = Symbol();
-import axios from "axios";
 const store = createStore<RootState>({
   state: {
     articleInfoLists: [],
@@ -18,8 +17,8 @@ const store = createStore<RootState>({
   },
   actions: {
     async getAllTitles({ commit }) {
-      const data = await axios.get(`${BASE_URL}/posts`);
-      commit("setAllArticlesTitle", data.data.articleInfoLists);
+      const data = await getAllPosts();
+      commit("setAllArticlesTitle", data.articleInfoLists);
     },
     getLocalTitles({ commit }) {
       const data = localStorage.getItem("articleInfoLists");

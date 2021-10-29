@@ -15,7 +15,7 @@ import { defineComponent, reactive, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import TArticle from '../components/article.vue'
-import getArticle from '@/request/getArticle'
+import { getArticle } from '@/request/main'
 export default defineComponent({
   components: {
     TArticle
@@ -35,7 +35,7 @@ export default defineComponent({
     article.createAt = findArticle.createAt
     async function getArticleStart() {
       const res: any = await getArticle(route.params.title as string)
-      article.body = res.data.articleBody
+      article.body = res.articleBody
     }
     getArticleStart()
     return {
