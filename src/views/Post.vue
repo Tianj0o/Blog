@@ -35,6 +35,8 @@ export default defineComponent({
     article.createAt = findArticle.createAt
     async function getArticleStart() {
       const res: any = await getArticle(route.params.title as string)
+      console.log(route.params.title)
+      console.log(res)
       article.body = res.articleBody
     }
     getArticleStart()

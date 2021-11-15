@@ -29,4 +29,10 @@ const TR = new TTrequest({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
 });
+
+const YYRequest = new TTrequest({
+  baseURL:'https://v1.hitokoto.cn',
+  timeout:2000
+})
 export default TR;
+export {YYRequest}

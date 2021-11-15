@@ -95,6 +95,7 @@ function loop() {
   window.requestAnimationFrame(loop);
 }
 function init(): void {
+  ctx.clearRect(0, 0, width, height);
   for (let i = 0; i < 50; i++) {
     balls.push(newBall());
   }

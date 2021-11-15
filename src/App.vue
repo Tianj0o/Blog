@@ -16,6 +16,7 @@
     </div>
     <div class="footer">
       <div>
+        <h4 style="color:black">{{ yiyan }}</h4>
         <a
           style="text-decoration: none;"
           href="https://beian.miit.gov.cn/#/Integrated/index"
@@ -27,12 +28,21 @@
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
 import { useRoute, useRouter } from "vue-router";
+import { ref } from "@vue/reactivity";
 import init from './hooks/useBgcAnimation'
+import useYiyan from "./hooks/useYiyan";
 export default defineComponent({
   setup() {
     const router = useRouter()
     const route = useRoute()
     init()
+    const yiyan = ref<string>()
+    async function getYiyan() {
+      const { hitokoto } = await useYiyan()
+      yiyan.value = hitokoto
+      console.log(yiyan.value)
+    }
+    getYiyan()
     const handleTitleClick = () => {
 
       if (route.path !== '/') {
@@ -41,7 +51,8 @@ export default defineComponent({
     }
 
     return {
-      handleTitleClick
+      handleTitleClick,
+      yiyan
     }
   }
 })
